@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>About Her Provenance</title>
+<meta name="description" content="Her Provenance is home for socially active, spiritually aware Black women. Founded by Idara Whem; part of The Provenance at Sieber Fillman Publishing.">
+<link rel="canonical" href="https://www.herprovenance.com/about/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="About Her Provenance">
+<meta property="og:description" content="Her Provenance is home for socially active, spiritually aware Black women. Founded by Idara Whem; part of The Provenance at Sieber Fillman Publishing.">
+<meta property="og:url" content="https://www.herprovenance.com/about/">
+<meta name="theme-color" content="#0A0A0F">
+<link rel="icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Syne:wght@600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<nav class="nav" aria-label="Main">
+  <div class="wrap">
+    <a class="logo" href="/">Her <span>Provenance</span></a>
+    <button class="menu" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
+    <ul id="menu"><li><a href="/legacy/">Her legacy</a></li><li><a href="/winning-women/">Winning women</a></li><li><a href="/kemet/">Kemet</a></li><li><a href="/at-work/">At work</a></li><li><a href="/your-record/">Your record</a></li><li><a href="/books/">Books</a></li><li><a href="/about/" aria-current="page">About</a></li><li><a class="cta" href="/your-record/#join">Join the list</a></li></ul>
+  </div>
+</nav>
+<main id="main">
+<header class="page-hero"><div class="wrap">
+  <span class="label">About</span>
+  <h1>Home for the woman <em>who carries the legacy.</em></h1>
+  <p>Her Provenance is for socially active, spiritually aware Black women, including women of mixed ancestry who identify as Black women.</p>
+</div></header>
+<div class="wrap prose">
+  <h2>What Her Provenance is</h2>
+  <p>A home for knowledge, uplift and tools. We tell the history of the Black women who shaped nations, teach the patterns that hold us back at work and how to answer them, explore the spiritual traditions that have always sustained our activism, and build <a href="/your-record/#the-record">The Record</a>, a private app that keeps your name on your work.</p>
+  <h2>Who&rsquo;s behind it</h2>
+  <p><b>Idara Whem</b> founded Her Provenance and wrote <a href="/books/">The Provenance Files</a> and the Sacred Balance Library. Her Provenance is part of <a href="https://www.sieberfillmanpublishing.com/the-provenance/">The Provenance</a>, the social-activism home of <a href="https://www.sieberfillmanpublishing.com/">Sieber Fillman Publishing</a>, an independent press in Tucson, Arizona. Its spiritual practice lives at <a href="https://www.tmbol.org/">TMBOL.org</a>.</p>
+  <h2>What we believe</h2>
+  <ul>
+    <li>Black women have always shown up. The record should say so.</li>
+    <li>Excellence is inherited. Knowing your history is knowing your worth.</li>
+    <li>Spirit and action belong together.</li>
+    <li>How we treat each other is part of the movement.</li>
+    <li>Your data is yours. We build tools that can&rsquo;t read what you record.</li>
+  </ul>
+  <h2 id="contact">Contact</h2>
+  <p>For press, speaking, partnerships, bulk book orders, or a woman you think belongs in <a href="/legacy/">Her Legacy</a>, send a note. We reply within two business days.</p>
+  <form class="wl" id="ct" novalidate style="justify-content:flex-start;margin:22px 0 72px;max-width:620px">
+    <label class="hp" aria-hidden="true">Leave empty<input name="company_website" tabindex="-1" autocomplete="off"></label>
+    <input type="text" id="ctName" name="name" placeholder="Your name" autocomplete="name" aria-label="Your name" style="flex:1 1 240px;min-width:0;padding:14px 16px;border:1px solid var(--rule);background:#fff;font:400 15px var(--mono);color:var(--text)">
+    <input type="email" id="ctEmail" name="email" placeholder="your@email.com" autocomplete="email" required aria-label="Email address" style="flex:1 1 240px;min-width:0;padding:14px 16px;border:1px solid var(--rule);background:#fff;font:400 15px var(--mono);color:var(--text)">
+    <textarea id="ctMsg" name="message" rows="5" placeholder="Your message" aria-label="Your message" style="flex:1 1 100%;padding:14px 16px;border:1px solid var(--rule);background:#fff;font:400 16px/1.5 var(--serif);color:var(--text)"></textarea>
+    <button class="btn btn-ink" type="submit" id="ctBtn">Send</button>
+    <div class="msg" id="ctOut" role="status" aria-live="polite" style="flex:1 1 100%;color:var(--rose-dk)"></div>
+  </form>
+</div>
+<script>
+(function(){var f=document.getElementById('ct');if(!f)return;var o=document.getElementById('ctOut'),b=document.getElementById('ctBtn');
+f.addEventListener('submit',function(e){e.preventDefault();var em=document.getElementById('ctEmail').value,msg=document.getElementById('ctMsg').value;
+if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)){o.textContent='Please enter a valid email address.';return}if(msg.trim().length<5){o.textContent='Please write a short message.';return}
+b.disabled=true;b.textContent='Sending…';
+fetch('/waitlist.php',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({kind:'contact',name:document.getElementById('ctName').value,email:em,message:msg,company_website:f.company_website.value})})
+.then(function(r){return r.json().catch(function(){return{}}).then(function(j){if(!r.ok)throw new Error(j.error||'Something went wrong.');})})
+.then(function(){f.innerHTML='<p style="font-size:20px">Thank you. Your message is in, and we’ll reply within two business days.</p>'})
+.catch(function(err){o.textContent=err.message;b.disabled=false;b.textContent='Send'})})})();
+</script>
+
+</main>
+<footer>
+  <div class="wrap">
+    <div><a class="logo" href="/">Her <span>Provenance</span></a>
+      <p>For the socially active, spiritually aware Black woman: the legacy you come from, the knowledge to lead, the tools to win.</p></div>
+    <div><h4>Learn</h4><ul><li><a href="/legacy/">Women who shaped nations</a></li><li><a href="/winning-women/">Winning women</a></li><li><a href="/kemet/">Kemet: spirit &amp; Maat</a></li><li><a href="/at-work/">At work</a></li><li><a href="/your-record/">Document it, know your rights</a></li></ul></div>
+    <div><h4>More</h4><ul><li><a href="/books/">The books</a></li><li><a href="/about/">About &amp; contact</a></li><li><a href="https://www.sieberfillmanpublishing.com/the-provenance/">The Provenance</a></li><li><a href="https://www.tmbol.org/">TMBOL &middot; Maat &amp; alignment</a></li></ul></div>
+    <div class="copy">&copy; <span class="yr">2026</span> Her Provenance &middot; A Sieber Fillman Publishing project &middot; General information, not legal advice</div>
+  </div>
+</footer>
+<script src="/assets/site.js" defer></script>
+</body>
+</html>
